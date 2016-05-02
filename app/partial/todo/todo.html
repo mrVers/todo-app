@@ -1,0 +1,40 @@
+<div class="col-md-12">
+    <h1>my todos</h1>
+    <br />
+    <form ng-submit="addTodo()" >
+        <input ng-model="todo.title" type="text" class="form-control" placeholder="What needs to be done?">
+    </form>
+            <br />
+        <br />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="todo in todos | orderBy: getPrettyTime : true">
+            <td width="50px">
+                <div class="btn btn-xs btn-default" ng-class="{'btn-success': !todo.active}" ng-click="setActive(todo)">Finish</div>
+            </td>
+            <td editable-text="todo.title" buttons="no" ng-class="{'done': !todo.active}" onbeforesave="updateTitle(todo, $data)">
+                {{todo.title}}</td>
+            <td title="{{todo.date | date:'dd.MM.yyyy'}}" ng-class="{'done': !todo.active}">{{getPrettyTime(todo.date)}}
+            </td>
+            <td>
+                <div class="btn btn-xs btn-danger" ng-click="removeTodo(todo._id)">Remove</div>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+    <div>
+
+    </div>
+    <h3>Total: {{todos.length}}</h3>
+</div>

@@ -1,0 +1,11 @@
+.table>tbody>tr>td.done {
+    
+    font-style: italic;
+    text-decoration: line-through;
+    color:#bbb;
+    border-bottom: 0px;
+}
+
+.editable-click {
+        border-bottom: 0px;
+}
